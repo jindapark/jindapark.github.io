@@ -1,0 +1,375 @@
+<!DOCTYPE HTML>
+<html lang="en">
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+  <title>Jinhyung Park</title>
+
+  <meta name="author" content="Jinhyung Park">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="shortcut icon" href="images/favicon/favicon.ico" type="image/x-icon">
+  <link rel="stylesheet" type="text/css" href="stylesheet.css">
+
+</head>
+
+<body>
+  <table
+    style="width:100%;max-width:800px;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;">
+    <tbody>
+      <tr style="padding:0px">
+        <td style="padding:0px">
+          <table
+            style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;">
+            <tbody>
+              <tr style="padding:0px">
+                <td style="padding:2.5%;width:63%;vertical-align:middle">
+                  <p class="name" style="text-align: center;">
+                    Jinhyung Park
+                  </p>
+                  <p>I am a second-year PhD student at CMU's Robotics Institute, advised by Prof. <a
+                      href="https://kriskitani.github.io/">Kris Kitani</a>. I previously received my bachelor's degree
+                    in Computer Science at CMU in 2022, also working with Prof. Kris Kitani.
+                  </p>
+                  <p>
+                    Additionally, I had the opportunity to conduct research at the <a
+                      href="https://msc.berkeley.edu">MSC Lab</a> in UC Berkeley for two summers, advised by Prof. <a
+                      href="https://me.berkeley.edu/people/masayoshi-tomizuka/">Masayoshi Tomizuka</a> and Dr. <a
+                      href="https://zhanwei.site/">Wei Zhan</a>. I also worked for a summer at Meta Zurich researching
+                    3D panoptic reconstruction.
+                  </p>
+                  <p style="text-align:center">
+                    <a href="mailto:jinhyun1@andrew.cmu.edu">Email</a> &nbsp;/&nbsp;
+                    <a href="data/Jinhyung_Park_CV.pdf">CV</a> &nbsp;/&nbsp;
+                    <a href="https://scholar.google.com/citations?user=L3Ea5NIAAAAJ&hl">Scholar</a> &nbsp;/&nbsp;
+                    <a href="https://github.com/Divadi/">Github</a>
+                  </p>
+                </td>
+                <td style="padding:2.5%;width:40%;max-width:40%">
+                  <a href="images/park.jpg"><img
+                      style="width:100%;max-width:100%;object-fit: cover; border-radius: 50%;" alt="profile photo"
+                      src="images/park.jpg" class="hoverZoomLink"></a>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+          <table
+            style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;">
+            <tbody>
+              <tr>
+                <td style="padding:20px;width:100%;vertical-align:middle">
+                  <h2>Research</h2>
+                  <p>
+                    I'm broadly interested in computer vision, joint 2D/3D understanding, and multi-modal learning. Much
+                    of my research focuses on bridging 2D and 3D representations for a cohesive
+                    understanding of the world.
+                  </p>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+          <table
+            style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;">
+            <tbody>
+              <tr>
+                <td style="padding:20px;width:25%;vertical-align:middle">
+                  <div class="one">
+                    <img src='images/azimuth.png' width="160">
+                  </div>
+                </td>
+                <td style="padding:5px;width:75%;vertical-align:middle">
+                  <a
+                    href="https://openaccess.thecvf.com/content/CVPR2023/papers/Li_Azimuth_Super-Resolution_for_FMCW_Radar_in_Autonomous_Driving_CVPR_2023_paper.pdf">
+                    <span class="papertitle">Azimuth Super-Resolution for FMCW Radar in Autonomous Driving</span>
+                  </a>
+                  <br>
+
+                  <a href="https://yujheli.github.io/">Yu-Jhe Li</a>, <a
+                    href="https://www.zoominfo.com/p/Shawn-Hunt/3804565713">Shawn Hunt</a>, <strong>Jinhyung
+                    Park</strong>, <a href="https://www.cs.cmu.edu/~motoole2/">Matthew O'Toole</a>, <a
+                    href="https://kriskitani.github.io/">Kris Kitani</a>
+                  <br>
+                  <em>CVPR</em>, 2023
+                  <br>
+                  <a
+                    href="https://openaccess.thecvf.com/content/CVPR2023/papers/Li_Azimuth_Super-Resolution_for_FMCW_Radar_in_Autonomous_Driving_CVPR_2023_paper.pdf">paper</a> /
+                  <a href="https://github.com/yujheli/Pitt-Radar">code</a>
+                  /
+                  <a href="data/Li2023AzimuthSF.bib">bibtex</a>
+                  <p></p>
+                  <p>Super-resolution of radar using raw ADC signals effectively simulates additional receiver antennas
+                    and improves downstream detection performance.</p>
+                </td>
+              </tr>
+
+              <tr onmouseout="solofusion_stop()" onmouseover="solofusion_start()">
+                <td style="padding:20px;width:25%;vertical-align:middle">
+                  <div class="one">
+                    <div class="two" id='solofusion_image'><video width=100% height=100% muted autoplay loop>
+                        <source src="images/solofusion.mp4" type="video/mp4">
+                        Your browser does not support the video tag.
+                      </video></div>
+                    <img src='images/solofusion.png' width="160">
+                  </div>
+                  <script type="text/javascript">
+                    function solofusion_start() {
+                      document.getElementById('solofusion_image').style.opacity = "1";
+                    }
+
+                    function solofusion_stop() {
+                      document.getElementById('solofusion_image').style.opacity = "0";
+                    }
+                    solofusion_stop()
+                  </script>
+                </td>
+                <td style="padding:5px;width:75%;vertical-align:middle">
+                  <a href="https://arxiv.org/abs/2210.02443">
+                    <span class="papertitle">Time Will Tell: New Outlooks and A Baseline for Temporal Multi-View 3D
+                      Object Detection</span>
+                  </a>
+                  <br>
+
+                  <strong>Jinhyung Park*</strong>, <a href="https://www.chenfengx.com/">Chenfeng Xu*</a>, <a
+                    href="https://bronyayang.github.io/personal_website/">Shijia Yang</a>, <a
+                    href="https://people.eecs.berkeley.edu/~keutzer/">Kurt Keutzer</a>, <a
+                    href="https://kriskitani.github.io/">Kris Kitani</a>, <a
+                    href="https://me.berkeley.edu/people/masayoshi-tomizuka/">Masayoshi Tomizuka</a>, <a
+                    href="https://zhanwei.site/">Wei Zhan</a>
+                  <br>
+                  <em>ICLR</em>, 2023 &nbsp <font color="red"><strong>(Oral Presentation, Top 5% of accepted
+                      papers)</strong></font>
+                  <br>
+                  <a href="https://arxiv.org/abs/2210.02443">paper</a> /
+                  <a href="https://github.com/Divadi/SOLOFusion">code</a> /
+                  <a href="data/Park2022TimeWT.bib">bibtex</a>
+
+                  <p></p>
+                  <p>Combining long-term, low-resolution and short-term, high-resolution matching for temporal stereo
+                    yields efficient and performant camera-only 3D detectors.</p>
+                </td>
+              </tr>
+
+              <tr>
+                <td style="padding:20px;width:25%;vertical-align:middle">
+                  <div class="one">
+                    <img src='images/detmatch.png' width="160">
+                  </div>
+                </td>
+                <td style="padding:5px;width:75%;vertical-align:middle">
+                  <a href="https://www.ecva.net/papers/eccv_2022/papers_ECCV/papers/136700366.pdf">
+                    <span class="papertitle">DetMatch: Two Teachers are Better Than One for Joint 2D and 3D
+                      Semi-Supervised Object Detection</span>
+                  </a>
+                  <br>
+
+                  <strong>Jinhyung Park</strong>, <a href="https://www.chenfengx.com/">Chenfeng Xu</a>, <a
+                    href="https://scholar.google.com/citations?user=q-ZAex8AAAAJ&hl=en">Yiyang Zhou</a>, <a
+                    href="https://me.berkeley.edu/people/masayoshi-tomizuka/">Masayoshi Tomizuka</a>, <a
+                    href="https://zhanwei.site/">Wei Zhan</a>
+                  <br>
+                  <em>ECCV</em>, 2022
+                  <br>
+                  <a href="https://www.ecva.net/papers/eccv_2022/papers_ECCV/papers/136700366.pdf">paper</a> /
+                  <a href="https://github.com/Divadi/DetMatch">code</a> /
+                  <a href="data/Park2022DetMatchTT.bib">bibtex</a>
+                  <p></p>
+                  <p>Consistency between 2D and 3D pseudo-labels for joint 2D-3D semi-supervised learning stymies
+                    single-modality error propagation and improves performance.</p>
+                </td>
+              </tr>
+
+              <tr>
+                <td style="padding:20px;width:25%;vertical-align:middle">
+                  <div class="one">
+                    <img src='images/stmvd.png' width="160">
+                  </div>
+                </td>
+                <td style="padding:5px;width:75%;vertical-align:middle">
+                  <a
+                    href="https://openaccess.thecvf.com/content/CVPR2022/papers/Li_Modality-Agnostic_Learning_for_Radar-Lidar_Fusion_in_Vehicle_Detection_CVPR_2022_paper.pdf">
+                    <span class="papertitle">Modality-Agnostic Learning for Radar-Lidar Fusion in Vehicle
+                      Detection</span>
+                  </a>
+                  <br>
+
+                  <a href="https://yujheli.github.io/">Yu-Jhe Li</a>, <strong>Jinhyung
+                    Park</strong>, <a href="https://www.cs.cmu.edu/~motoole2/">Matthew O'Toole</a>, <a
+                    href="https://kriskitani.github.io/">Kris Kitani</a>
+                  <br>
+                  <em>CVPR</em>, 2021
+                  <br>
+                  <a
+                    href="https://openaccess.thecvf.com/content/CVPR2022/papers/Li_Modality-Agnostic_Learning_for_Radar-Lidar_Fusion_in_Vehicle_Detection_CVPR_2022_paper.pdf">paper</a>
+                  /
+                  <a href="data/Li2022ModalityAgnosticLF.bib">bibtex</a>
+                  <p></p>
+                  <p>Multi-modal fusion with prediction consistency between privileged teacher and noisy student
+                    alleivates collapse in difficult capture conditions and improves performance in ideal conditions.
+                  </p>
+                </td>
+              </tr>
+
+              <tr>
+                <td style="padding:20px;width:25%;vertical-align:middle">
+                  <div class="one">
+                    <img src='images/mtcrcnn.png' width="160">
+                  </div>
+                </td>
+                <td style="padding:5px;width:75%;vertical-align:middle">
+                  <a href="https://www.bmvc2021-virtualconference.com/assets/papers/1119.pdf">
+                    <span class="papertitle">Multi-Modality Task Cascade for 3D Object Detection</span>
+                  </a>
+                  <br>
+
+                  <strong>Jinhyung Park</strong>, <a href="https://www.xinshuoweng.com/">Xinshuo Weng</a>, <a
+                    href="https://yunzeman.github.io/">Yunze Man</a>, <a href="https://kriskitani.github.io/">Kris
+                    Kitani</a>
+                  <br>
+                  <em>BMVC</em>, 2021
+                  <br>
+                  <a href="https://www.bmvc2021-virtualconference.com/assets/papers/1119.pdf">paper</a> /
+                  <a href="data/Park2021MultiModalityTC.bib">bibtex</a>
+                  <p></p>
+                  <p>Recursive, cascaded fusion of 2D and 3D representations at the task level improves both 2D
+                    segmentation and 3D detection quality.
+                  </p>
+                </td>
+              </tr>
+
+              <tr>
+                <td style="padding:20px;width:25%;vertical-align:middle">
+                  <div class="one">
+                    <img src='images/crackrl.png' width="160">
+                  </div>
+                </td>
+                <td style="padding:5px;width:75%;vertical-align:middle">
+                  <a href="https://ieeexplore.ieee.org/abstract/document/9506446">
+                    <span class="papertitle">Crack Detection and Refinement Via Deep Reinforcement Learning</span>
+                  </a>
+                  <br>
+
+                  <strong>Jinhyung Park</strong>, <a href="https://chenyichun.github.io/">Yi-Chun Chen</a>, <a
+                    href="https://yujheli.github.io/">Yu-Jhe Li</a>, <a href="https://kriskitani.github.io/">Kris
+                    Kitani</a>
+                  <br>
+                  <em>ICIP</em>, 2021 &nbsp <font color="red"><strong>(Best Industry Impact Award)</strong></font>
+                  <br>
+                  <a href="https://ieeexplore.ieee.org/abstract/document/9506446">paper</a> /
+                  <a href="data/Park2021CrackDA.bib">bibtex</a>
+                  <p></p>
+                  <p>Second-stage refinement of segmentation masks through an RL agent iteratively completes and cleans
+                    predictions.
+                  </p>
+                </td>
+              </tr>
+
+              <tr>
+                <td style="padding:20px;width:25%;vertical-align:middle">
+                  <div class="one">
+                    <img src='images/aiodrive.png' width="160">
+                  </div>
+                </td>
+                <td style="padding:5px;width:75%;vertical-align:middle">
+                  <a href="https://www.xinshuoweng.com/papers/AIODrive/arXiv.pdf">
+                    <span class="papertitle">A Large-Scale Comprehensive Perception Dataset with High-Density Long-Range
+                      Point Clouds</span>
+                  </a>
+                  <br>
+
+                  <a href="https://www.xinshuoweng.com/">Xinshuo Weng</a>, <a
+                    href="https://scholar.google.com/citations?user=xzr7na8AAAAJ&hl=en">Dazhi Cheng</a>, <a
+                    href="https://yunzeman.github.io/">Yunze Man</a>, <strong>Jinhyung Park</strong>, <a
+                    href="https://www.cs.cmu.edu/~motoole2/">Matthew O'Toole</a>, <a
+                    href="https://kriskitani.github.io/">Kris
+                    Kitani</a>
+                  <br>
+                  <em>arXiv</em>, 2021
+                  <br>
+                  <a href="http://www.aiodrive.org/index.html">dataset page</a> /
+                  <a href="http://www.xinshuoweng.com/papers/AIODrive/arXiv.pdf">paper</a> /
+                  <a href="data/Weng2020_AIODrive.bib">bibtex</a>
+                  <p></p>
+                  <p>Large-scale synthetic driving dataset with comprehensive data distribution, sensor suite, and
+                    annotations.
+                  </p>
+                </td>
+              </tr>
+
+              <tr>
+                <td style="padding:20px;width:25%;vertical-align:middle">
+                  <div class="one">
+                    <img src='images/privacy.png' width="160">
+                  </div>
+                </td>
+                <td style="padding:5px;width:75%;vertical-align:middle">
+                  <a href="https://dl.acm.org/doi/10.1145/3148150.3148152">
+                    <span class="papertitle">Protecting User Privacy: Obfuscating Discriminative Spatio-Temporal
+                      Footprints</span>
+                  </a>
+                  <br>
+
+                  <strong>Jinhyung Park</strong>, <a
+                    href="https://scholar.google.com/citations?user=fQJPVMAAAAAJ&hl=en">Erik Seglem</a>, <a
+                    href="https://www.linkedin.com/in/ericzlin/">Eric Lin</a>, <a href="https://www.zuefle.org/">Andreas
+                    Züfle</a>
+                  <br>
+                  <em>SIGSPATIAL LocalRec Workshop</em>, 2017
+                  <br>
+                  <a href="https://dl.acm.org/doi/10.1145/3148150.3148152">paper</a> /
+                  <a href="data/Park2017ProtectingUP.bib">bibtex</a>
+                  <p></p>
+                  <p>Consideration of entropy-based and adversarial obfuscation of user geolocation trajectories for
+                    online identity protection.
+                  </p>
+                </td>
+              </tr>
+
+              <tr>
+                <td style="padding:20px;width:25%;vertical-align:middle">
+                  <div class="one">
+                    <img src='images/metro.png' width="160">
+                  </div>
+                </td>
+                <td style="padding:5px;width:75%;vertical-align:middle">
+                  <a href="https://dl.acm.org/doi/10.1145/3152178.3152190">
+                    <span class="papertitle">Real-Time Bayesian Micro-Analysis for Metro Traffic Prediction
+                    </span>
+                  </a>
+                  <br>
+
+                  <a href="https://www.linkedin.com/in/ericzlin/">Eric Lin</a>, <strong>Jinhyung Park</strong>, <a
+                    href="https://www.zuefle.org/">Andreas
+                    Züfle</a>
+                  <br>
+                  <em>SIGSPATIAL UrbanGIS Workshop</em>, 2017
+                  <br>
+                  <a href="https://dl.acm.org/doi/10.1145/3152178.3152190">paper</a> /
+                  <a href="data/Lin2017RealTimeBM.bib">bibtex</a>
+                  <p></p>
+                  <p>Metro outflow prediction based on estimated distribution of origin-destination station pairs.
+                  </p>
+                </td>
+              </tr>
+
+            </tbody>
+          </table>
+
+
+          <table
+            style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;">
+            <tr>
+              <td style="padding:0px">
+                <br>
+                <p style="text-align:center;font-size:small;">
+                  Design and source code from <a style="font-size:small;" href="https://jonbarron.info">Jon Barron's
+                    website</a>
+                </p>
+              </td>
+            </tr>
+          </table>
+        </td>
+      </tr>
+  </table>
+</body>
+
+</html>

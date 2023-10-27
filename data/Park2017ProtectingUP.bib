@@ -1,0 +1,16 @@
+@inproceedings{Park2017ProtectingUP,
+author = {Park, Jinhyung D. and Seglem, Erik and Lin, Eric and Z\"{u}fle, Andreas},
+title = {Protecting User Privacy: Obfuscating Discriminative Spatio-Temporal Footprints},
+year = {2017},
+isbn = {9781450354998},
+publisher = {Association for Computing Machinery},
+address = {New York, NY, USA},
+url = {https://doi.org/10.1145/3148150.3148152},
+doi = {10.1145/3148150.3148152},
+abstract = {In recent years, applications that collect and store location data have become ubiquitous, allowing users to engage in a variety of interactions with other users and services in their digital or physical vicinity. However, usage of these geolocation services put users at risk of serious privacy threats. For instance, state-of-the-art user-identification methods use geospatial trajectories derived from location based services to identify users at an alarmingly high accuracy. In this work, we address the problem of protecting user identities by presenting methods for obfuscating discriminative location data in users' profiles. We utilize data provided by the public Twitter API, collecting tweets with geolocation tags from a select group of prolific users in a 12-week time period. To minimize the amount of data obfuscated, we present two methods to identify the most discriminative tweets. The first solution is to use an Entropy-Maximizing Observation Function based on the number of tweets the user has posted and the number of people who have posted in that specific location. This ensures tweets by infrequent users in unique locations are changed first. The other solution is to use the identification algorithm to figure out what users can be identified and only change tweets from those users. For both methods, to perturb a tweet, we move it to a location with more tweets to mask the identity of the user. A thorough experimentation of other baseline approaches shows that our model exhibits a significant decrease in user identification accuracy while keeping the percentage of changed data at a minimum.},
+booktitle = {Proceedings of the 1st ACM SIGSPATIAL Workshop on Recommendations for Location-Based Services and Social Networks},
+articleno = {2},
+numpages = {4},
+location = {Redondo Beach, CA, USA},
+series = {LocalRec'17}
+}
