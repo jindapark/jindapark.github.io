@@ -51,8 +51,10 @@
       <div class="container is-max-desktop">
         <div class="columns is-centered">
           <div class="column has-text-centered">
-            <h1 class="title is-1 publication-title">ATLAS: Decoupling Skeletal and Shape Parameters for Expressive Parametric Human Modeling</h1>
-            <div class="is-size-4 publication-authors">
+            <h1 class="title is-2 publication-title">
+              <!-- <img src="./static/images/icon.png" alt="ICON" style="max-width: 96px; vertical-align: middle;"> -->
+              <strong>🗺️ ATLAS: Decoupling Skeletal and Shape Parameters for Expressive Parametric Human Modeling</strong></h1>
+            <div class="is-size-5 publication-authors">
               <!-- Paper authors -->
               <span class="author-block"><a href="https://jindapark.github.io/" target="_blank">Jinhyung Park</a><sup>1</sup>&nbsp;&nbsp;&nbsp;</span>
               <span class="author-block"><a href="https://www.linkedin.com/in/javier-romero-38b87331" target="_blank">Javier Romero</a><sup>2</sup>&nbsp;&nbsp;&nbsp;</span>
@@ -66,7 +68,7 @@
               <span class="author-block"><a href="https://rawalkhirodkar.github.io/" target="_blank">Rawal Khirodkar</a><sup>2</sup>&nbsp;&nbsp;&nbsp;</span>
                   </div>
 
-                  <div class="is-size-4 publication-authors">
+                  <div class="is-size-5 publication-authors">
                     <span class="author-block"><sup>1</sup>Carnegie Mellon University</span>&nbsp;&nbsp;&nbsp;
                     <span class="author-block"><sup>2</sup>Meta</span>
                     <br><b>ICCV 2025</b>
@@ -119,7 +121,7 @@
   <div class="hero-body">
     <div class="container is-max-desktop">
       <!-- Paper video. -->
-      <h2 class="title is-3">ATLAS: A Controllable Mesh Model</h2>
+      <h2 class="title is-3">🗺️ ATLAS: An Expressive and Controllable Mesh Model</h2>
     <div class="item">
       <!-- Your image here -->
       <img src="static/images/atlas.png" alt="ATLAS"/>
@@ -133,23 +135,9 @@
 </section>
 
 
-<section class="section hero">
-<div class="columns is-centered has-text-centered">
-  <div class="column is-four-fifths">
-    <h2 class="title is-3">Video</h2>
-      <video poster="" id="tree" autoplay controls muted loop height="100%">
-        <!-- Your video here -->
-        <source src="static/videos/atlas.mp4"
-        type="video/mp4">
-      </video>
-  </div>
-</div>
-</section>
-
-
 <!-- Paper abstract -->
-<section class="section hero is-light">
-  <div class="container is-max-desktop">
+<section class="section hero">
+  <div class="container fluid">
     <div class="columns is-centered has-text-centered">
       <div class="column is-four-fifths">
         <h2 class="title is-3">Abstract</h2>
@@ -166,8 +154,331 @@
 
 
 
+<section class="hero is-small is-light">
+  <div class="hero-body">
+    <div class="container">
+      <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <br>
+      <h2 class="title is-3">🧍 High-Fidelity Human Mesh Reconstruction</h2>
+      <div class="content has-text-justified">
+        <p>
+          <b>ATLAS</b> reconstructs high-fidelity 3D humans across a wide range of poses, capturing both skeletal structure and surface details. 
+        </p>
+      </div>
+      <div id="results-carousel" class="carousel results-carousel" style="margin-top:-30px;">
+        <div class="item item-video1">
+          <video poster="" id="video1" muted loop autoplay="autoplay" height="100%">
+            <!-- Your video file here -->
+            <source src="static/videos/mesh_recon_male.mp4"
+            type="video/mp4">
+          </video>
+        </div>
+        <div class="item item-video1">
+          <video poster="" id="video1" muted loop autoplay="autoplay" height="100%">
+            <!-- Your video file here -->
+            <source src="static/videos/mesh_recon_female.mp4"
+            type="video/mp4">
+          </video>
+        </div>
+      </div>
+      </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="hero is-small">
+  <div class="hero-body">
+    <div class="container">
+      <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <br>
+      <h2 class="title is-3">🎛️ Precise, Fine-Grained Controllability</h2>
+      <div class="content has-text-justified">
+        <p>
+          <b>ATLAS</b> separates the internal skeleton from the external surface, removing spurious vertex-joint correlations and enabling independent control of the shape and skeleton.
+        </p>
+      </div>
+      <video poster="" id="tree" autoplay controls muted loop height="100%">
+        <!-- Your video here -->
+        <source src="static/videos/control.mp4"
+        type="video/mp4">
+      </video>
+      </div>
+      </div>
+    </div>
+  </div>
+</section>
 
 
+
+<section class="hero is-small is-light">
+  <div class="hero-body">
+    <div class="container">
+      <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <br>
+      <h2 class="title is-3">🌍 In-the-Wild Mesh Fitting</h2>
+      <div class="content has-text-justified">
+        <p>
+          <b>ATLAS</b> first aligns the skeleton to keypoints, then adapts body shape to silhouettes. 
+          This produces accurate and realistic 3D meshes under diverse real-world conditions.
+        </p>
+      </div>
+      <div id="results-carousel" class="carousel results-carousel" style="margin-top:-30px;">
+        <div class="item item-video1">
+          <video poster="" id="video1" muted loop autoplay="autoplay" height="100%">
+            <!-- Your video file here -->
+            <source src="static/videos/itw1.mp4"
+            type="video/mp4">
+          </video>
+        </div>
+        <div class="item item-video1">
+          <video poster="" id="video1" muted loop autoplay="autoplay" height="100%">
+            <!-- Your video file here -->
+            <source src="static/videos/itw2.mp4"
+            type="video/mp4">
+          </video>
+        </div>
+        <div class="item item-video1">
+          <video poster="" id="video1" muted loop autoplay="autoplay" height="100%">
+            <!-- Your video file here -->
+            <source src="static/videos/itw3.mp4"
+            type="video/mp4">
+          </video>
+        </div>
+        <div class="item item-video1">
+          <video poster="" id="video1" muted loop autoplay="autoplay" height="100%">
+            <!-- Your video file here -->
+            <source src="static/videos/itw4.mp4"
+            type="video/mp4">
+          </video>
+        </div>
+        <div class="item item-video1">
+          <video poster="" id="video1" muted loop autoplay="autoplay" height="100%">
+            <!-- Your video file here -->
+            <source src="static/videos/itw5.mp4"
+            type="video/mp4">
+          </video>
+        </div>
+      </div>
+      </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="hero is-small">
+  <div class="hero-body">
+    <div class="container">
+      <div class="columns is-centered has-text-centered">
+        <div class="column is-four-fifths">
+          <br>
+          <h2 class="title is-3">🛠 Model Design of ATLAS</h2>
+          <div class="content has-text-justified">
+            <p>
+              <b>Core Idea:</b> The surface vertices of the human body (e.g. soft tissue) should be <i>independent</i> of the internal skeleton (e.g. bone lengths).
+            </p>
+          </div>
+
+          <h2 class="title is-4">Prior Vertex-Centric Frameworks</h2>
+
+          <div class="content has-text-justified">
+            <p>
+              Prior work <i>entangle</i> the soft surface and the internal bones: they first personalize the surface vertices, then derive internal joints as a weighted sum of the surface.
+              This vertex-centric framework introduces undesirable correlations between the external surface and internal skeleton, and it inhibits precise, decoupled control of soft surface variation and internal skeletal attributes.
+            </p>
+          </div>
+
+          <!-- Row of images -->
+          <div class="columns is-centered is-vcentered has-text-centered">
+            <div class="column is-half">
+              <!-- <div style="display:inline-block; background:white; border-radius:9px; box-shadow: 0 3px 20px rgba(0,0,0,0.06), 0 6px 40px rgba(0,0,0,0.04); padding:1rem;"> -->
+                <img src="static/images/spine.jpg" alt="Comparison of Skeleton Symmetries" style="border-radius:6px;">
+              <!-- </div> -->
+            </div>
+            <div class="column is-half">
+              <!-- <div style="display:inline-block; background:white; border-radius:9px; box-shadow: 0 3px 20px rgba(0,0,0,0.06), 0 6px 40px rgba(0,0,0,0.04); padding:1.5rem 1rem;"> -->
+                <img src="static/images/scale_demo.jpg" alt="Controllable Skeletal Attributes" style="border-radius:6px;">
+              <!-- </div> -->
+            </div>
+          </div>
+
+          <!-- Row of captions -->
+          <div class="columns is-centered has-text-centered">
+            <div class="column is-half">
+              <p class="is-size-7">
+                <b>Comparison of Skeleton Symmetries.</b> SMPL-X (left) derives joints from surface vertices, producing an asymmetric skeleton,  
+                whereas <b>ATLAS</b> (right) maintains a symmetric and consistent skeleton.
+              </p>
+            </div>
+            <div class="column is-half">
+              <p class="is-size-7">
+                <b>Controllable Skeletal Attributes.</b> ATLAS enables easy control of skeletal parameters such as spine length,  
+                shoulder width, and hand size.
+              </p>
+            </div>
+          </div>
+
+          <h2 class="title is-4">ATLAS's Decoupled Shape and Skeleton</h2>
+
+          <div class="content has-text-justified">
+            <p>
+              Instead, <b>ATLAS</b> defines an explicit <i>default skeleton</i> that all subjects' surface vertices are aligned to. 
+              All surface variation aligned to this default skeleton, and bone length variation is applied to the skeleton during the Linear Blend Skinning posing process.
+              This separation enables easy control of the surface and skeleton.
+            </p>
+          </div>
+
+          <!-- First stacked image -->
+          <div class="has-text-centered">
+            <!-- <div style="display:inline-block; background:white; border-radius:9px; box-shadow: 0 3px 20px rgba(0,0,0,0.06), 0 6px 40px rgba(0,0,0,0.04); padding:1rem;"> -->
+              <figure class="image">
+                <img src="static/images/atlas_control.jpg" style="border-radius:6px;">
+              </figure>
+            <!-- </div> -->
+            <p class="is-size-7 has-text-justified" style="margin-top:0.5rem;">
+              <b>Character Customization Demo.</b> Starting with a detailed <b>ATLAS</b> mesh of a subject, we sequentially increase the shoulder width, change the arm length, and adjust the body weight. 
+              The resulting mesh is highly realistic, and it maintains details of the original subject shape and skeleton while naturally incorporating the added customizations.
+            </p>
+          </div>
+          
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+<section class="hero is-small is-light">
+  <div class="hero-body">
+    <div class="container">
+      <div class="columns is-centered has-text-centered">
+        <div class="column is-four-fifths">
+          <br>
+          <h2 class="title is-3">🕺 Sparse and Non-Linear Pose Correctives</h2>
+          <div class="content has-text-justified">
+            <p>
+              Mesh models come with <i>pose correctives</i>. These correctives are pose-dependent vertex offsets applied to the mesh prior to Linear Blend Skinning (LBS) to address joint collapse and other LBS posing artefacts.
+            </p>
+            <p>
+              Prior work use linear correctives (insufficiently expressive) or dense, non-linear MLPs (undesirable full-body correlations). 
+              <b>ATLAS</b> develops <i>sparse, non-linear</i> pose correctives, enforcing <i>sparse</i>, local joint-vertex correlations 
+              while allowing <i>non-linear</i>, expressive entanglement between neighboring kinematic joints.
+            </p>
+          </div>
+
+          <!-- Row of images -->
+          <div class="columns is-centered is-vcentered has-text-centered">
+            <div class="column is-half">
+              <div style="display:inline-block; background:white; border-radius:9px; box-shadow: 0 3px 20px rgba(0,0,0,0.06), 0 6px 40px rgba(0,0,0,0.04); padding:1.1rem 1rem;">
+                <img src="static/images/pcb_trained_shorter.jpg" style="border-radius:6px;">
+              </div>
+            </div>
+            <div class="column is-half">
+              <div style="display:inline-block; background:white; border-radius:9px; box-shadow: 0 3px 20px rgba(0,0,0,0.06), 0 6px 40px rgba(0,0,0,0.04); padding:1rem;">
+                <img src="static/images/pcb_eval_three.jpg" style="border-radius:6px;">
+              </div>
+            </div>
+          </div>
+
+          <!-- Row of captions -->
+          <div class="columns is-centered has-text-centered">
+            <div class="column is-half">
+              <p class="is-size-7">
+                <b>Sparse Pose Correctives.</b>  
+                The first row displays pose correctives from SMPL-X.  
+                The second row shows the inverse geodesic initialization for our pose corrective activations,  
+                and the third row demonstrates their sparsity after convergence.
+              </p>
+            </div>
+            <div class="column is-half">
+              <p class="is-size-7">
+                <b>Linear vs non-linear pose correctives.</b>  
+                For both linear and non-linear pose correctives (PCB), we show the predicted vertex offsets in the rest pose,  
+                the posed mesh, and the fitting error heatmap. Sparse, non-linear PCBs achieve lower error and yield more realistic meshes.
+              </p>
+            </div>
+          </div>
+          
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="hero is-small">
+  <div class="hero-body">
+    <div class="container">
+      <div class="columns is-centered has-text-centered">
+        <div class="column is-four-fifths">
+          <br>
+          <h2 class="title is-3">📊 High-Resolution Training Data</h2>
+          <div class="content has-text-justified">
+            <p>
+              <b>ATLAS</b> is trained on a large-scale dataset of 600k high-resolution scans of subjects in diverse poses. 
+              Trained on a more diverse set of shapes, identities, and poses, <b>ATLAS</b> is a general, expressive human body model.
+            </p>
+          </div>
+
+          <!-- First stacked image -->
+          <div class="has-text-centered">
+            <!-- <div style="display:inline-block; background:white; border-radius:9px; box-shadow: 0 3px 20px rgba(0,0,0,0.06), 0 6px 40px rgba(0,0,0,0.04); padding:1rem;"> -->
+              <figure class="image">
+                <img src="static/images/internal_samples_lowerres_new.jpg" style="border-radius:6px;">
+              </figure>
+            <!-- </div> -->
+            <p class="is-size-7 has-text-justified" style="margin-top:0.5rem;">
+              <b>Sampled Visualizations of Our Multi-Pose Dataset.</b> Scans are captured using a high-resolution scanner with 240 synchronized cameras. 
+              We then register meshes by regularizing joint locations with triangulated keypoints before performing iterative mesh fitting.
+            </p>
+          </div>
+          
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+<section class="hero is-small is-light">
+  <div class="hero-body">
+    <div class="container">
+      <div class="columns is-centered has-text-centered">
+        <div class="column is-four-fifths">
+          <br>
+          <h2 class="title is-3">📷 Single-Imge Mesh Fitting</h2>
+          <div class="content has-text-justified">
+            <p>
+              We pair <b>ATLAS</b> with a performant single-image fitting pipeline naturally compatible with our decoupled shape and skeleton model.
+            </p>
+            <p>
+              In our multi-stage optimization, skeleton and pose are fit first using keypoint and depth terms, followed by surface shape and expression refinement through mask and expression losses.
+              This ordering ensures clean disentanglement of structure from soft tissue, enabling accurate body shape recovery and robust expression capture.
+            </p>
+          </div>
+
+          <!-- First stacked image -->
+          <div class="has-text-centered">
+            <div style="display:inline-block; background:white; border-radius:9px; box-shadow: 0 3px 20px rgba(0,0,0,0.06), 0 6px 40px rgba(0,0,0,0.04); padding:1rem;">
+              <figure class="image">
+                <img src="static/images/shutterstock_tworows.jpg" style="border-radius:6px;">
+              </figure>
+            </div>
+            <p class="is-size-7 has-text-justified" style="margin-top:0.5rem;">
+              <b>Results of fitting ATLAS to in-the-wild images.</b> 
+              Our multi-stage body fitting procedure robustly handles clothed subjects in varying poses along with detailed facial expressions.
+            </p>
+          </div>
+          
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
 
 <!--BibTex citation -->
   <section class="section" id="BibTeX">
