@@ -15,7 +15,7 @@
 
 <body>
   <table
-    style="width:100%;max-width:800px;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;">
+    style="width:100%;max-width:860px;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;">
     <tbody>
       <tr style="padding:0px">
         <td style="padding:0px">
@@ -38,7 +38,8 @@
                       href="https://zhanwei.site/">Wei Zhan</a>. 
                   </p>    
                   <p>
-                    I previously interned at Meta Zurich and Meta Reality Labs working on 3D panoptic reconstruction and parametric human body modeling.
+                    I previously interned at Meta working on 3D panoptic reconstruction, parametric human body modeling, and promptable mesh recovery. 
+                    I have also interned at Applied Intuition working on 3D occupancy estimation.
                   </p>
                   <p style="text-align:center">
                     <a href="mailto:jinhyun1@andrew.cmu.edu">Email</a> &nbsp;/&nbsp;
@@ -62,7 +63,7 @@
                 <td style="padding:20px;width:100%;vertical-align:middle">
                   <h2>Research</h2>
                   <p>
-                    I'm broadly interested in computer vision, joint 2D/3D understanding, human motion modeling, and multi-modal learning. Much
+                    I'm broadly interested in computer vision, joint 2D/3D understanding, human motion modeling, and vision-centric humanoid control. Much
                     of my research focuses on bridging 2D and 3D representations for a cohesive
                     understanding of the world.
                   </p>
@@ -73,6 +74,95 @@
           <table
             style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;">
             <tbody>
+
+              <tr onmouseover="sam3d_start()" onmouseout="sam3d_stop()" onclick="sam3d_toggle()">
+                <td style="padding:20px;width:25%;text-align:center;">
+                  <div style="display:table;height:100%;">
+                    <div style="display:table-cell;vertical-align:middle;">
+                      <video id="sam3d_video" src='images/sam3dbody.mp4' width="160" muted loop playsinline preload="metadata"></video>
+                    </div>
+                  </div>
+                </td>
+                <td style="padding:5px;width:75%;vertical-align:middle">
+                  <a href="https://ai.meta.com/research/publications/sam-3d-body-robust-full-body-human-mesh-recovery/">
+                    <span class="papertitle">SAM 3D Body: Robust Full-Body Human Mesh Recovery</span>
+                  </a>
+                  <br>
+                  <a href="https://www.linkedin.com/in/xitong-yang-33573599/">Xitong Yang</a>,
+                  <a href="https://devanshk.github.io/">Devansh Kukreja</a>,
+                  <a href="https://www.linkedin.com/in/don-pinkus-9140702a/">Don Pinkus</a>,
+                  <a href="https://www.linkedin.com/in/anushkasagar/">Anushka Sagar</a>,
+                  <a href="https://murpheylab.github.io/people/taoshafan.html">Taosha Fan</a>,
+                  <strong>Jinhyung Park</strong>,
+                  <a href="https://yohanshin.github.io/">Soyong Shin</a>,
+                  <a href="https://www.jinkuncao.com/">Jinkun Cao</a>,
+                  <a href="https://jia-wei-liu.github.io/">Jiawei Liu</a>,
+                  <a href="https://www.iri.upc.edu/people/nugrinovic/">Nicolas Ugrinovic</a>,
+                  <a href="https://www.linkedin.com/in/matt-feiszli-76b34b/">Matt Feiszli</a>,
+                  <a href="https://people.eecs.berkeley.edu/~malik/">Jitendra Malik</a>,
+                  <a href="https://pdollar.github.io/">Piotr Dollar</a>,
+                  <a href="https://kriskitani.github.io/">Kris Kitani</a>
+                  <br>
+                  <em>In Submission</em>, 2025
+                  <br>
+                  <a href="https://ai.meta.com/research/publications/sam-3d-body-robust-full-body-human-mesh-recovery/">paper</a> /
+                  <a href="https://github.com/facebookresearch/sam-3d-body">code</a> /
+                  <a href="https://www.aidemos.meta.com/segment-anything/editor/convert-body-to-3d">demo</a> /
+                  <a href="data/Yang2025SAM3DBody.bib">bibtex</a>
+                  <p></p>
+                  <p>
+                    SAM 3D Body is a promptable full-body mesh recovery model built on MHR that uses 2D keypoint/mask prompts and large-scale data curation for robust body and hand pose estimation in the wild.
+                  </p>
+                </td>
+              </tr>
+              <script type="text/javascript">
+                function sam3d_start() {
+                  var v = document.getElementById('sam3d_video');
+                  if (v) { v.playbackRate = 2.0; v.play(); }
+                }
+                function sam3d_stop() {
+                  var v = document.getElementById('sam3d_video');
+                  if (v) { v.pause(); v.currentTime = 0; }
+                }
+                function sam3d_toggle() {
+                  var v = document.getElementById('sam3d_video');
+                  if (!v) return;
+                  v.playbackRate = 2.0;
+                  if (v.paused) {
+                    v.play();
+                  } else {
+                    v.pause();
+                    v.currentTime = 0;
+                  }
+                }
+              </script>
+
+              <tr>
+                <td style="padding:20px;width:25%;text-align:center;">
+                  <div style="display:table;height:100%;">
+                    <div style="display:table-cell;vertical-align:middle;">
+                      <img src='images/mhr.png' width="160">
+                    </div>
+                  </div>
+                </td>
+                <td style="padding:5px;width:75%;vertical-align:middle">
+                  <a href="https://arxiv.org/abs/2511.15586">
+                    <span class="papertitle">MHR: Momentum Human Rig</span>
+                  </a>
+                  <br>
+                  The Momentum Team
+                  <br>
+                  <em>arXiv preprint</em>, 2025
+                  <br>
+                  <a href="https://arxiv.org/abs/2511.15586">paper</a> /
+                  <a href="https://github.com/facebookresearch/MHR">code</a> /
+                  <a href="data/MHR2025.bib">bibtex</a>
+                  <p></p>
+                  <p>
+                    MHR is a parametric human body model incorporating ATLAS with a production-ready decoupled skeleton/shape rig, semantic expression blendshapes, and sparse pose correctives for expressive, anatomically plausible animation.
+                  </p>
+                </td>
+              </tr>
 
               <tr>
                 <td style="padding:20px;width:25%;text-align:center;">
