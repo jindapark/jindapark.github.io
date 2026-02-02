@@ -1,0 +1,882 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="description" content="S2GO is a streaming, sparse query-based 3D occupancy framework that decodes queries into semantic Gaussians and splats them into voxels for efficient occupancy estimation and forecasting.">
+  <meta property="og:title" content="S2GO: Streaming Sparse Gaussian Occupancy"/>
+  <meta property="og:description" content="S2GO: Streaming Sparse Gaussian Occupancy"/>
+  <meta property="og:url" content="https://jindapark.github.io/projects/s2go/"/>
+  <meta property="og:image" content="https://jindapark.github.io/images/s2go.png" />
+  <meta property="og:image:width" content="1200"/>
+  <meta property="og:image:height" content="630"/>
+
+  <meta name="twitter:title" content="S2GO: Streaming Sparse Gaussian Occupancy">
+  <meta name="twitter:description" content="S2GO: Streaming Sparse Gaussian Occupancy">
+  <meta name="twitter:image" content="https://jindapark.github.io/images/s2go.png">
+  <meta name="keywords" content="S2GO, Streaming, Sparse Queries, 3D Occupancy, 3D Gaussians">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>S2GO: Streaming Sparse Gaussian Occupancy</title>
+  <link
+    rel="icon"
+    href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🫧</text></svg>"
+  />
+  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro" rel="stylesheet">
+
+  <link rel="stylesheet" href="static/css/bulma.min.css">
+  <link rel="stylesheet" href="static/css/bulma-carousel.min.css">
+  <link rel="stylesheet" href="static/css/bulma-slider.min.css">
+  <link rel="stylesheet" href="static/css/fontawesome.all.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  <link rel="stylesheet" href="static/css/index.css">
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://documentcloud.adobe.com/view-sdk/main.js"></script>
+  <script defer src="static/js/fontawesome.all.min.js"></script>
+  <script src="static/js/bulma-carousel.min.js"></script>
+  <script src="static/js/bulma-slider.min.js"></script>
+  <script src="static/js/index.js"></script>
+</head>
+<body>
+
+  <section class="hero is-light">
+    <div class="hero-body">
+      <div class="container is-max-desktop">
+        <div class="columns is-centered">
+          <div class="column has-text-centered">
+            <h1 class="title is-2 publication-title">
+              <strong>🫧 S2GO: Streaming Sparse Gaussian Occupancy</strong>
+            </h1>
+            <div class="is-size-5 publication-authors">
+              <span class="author-block"><a href="https://jindapark.github.io/" target="_blank">Jinhyung Park</a><sup>1,2</sup>&nbsp;&nbsp;&nbsp;</span>
+              <span class="author-block"><a href="https://pengchensheng.com/" target="_blank">Chensheng Peng</a><sup>1,3</sup>&nbsp;&nbsp;&nbsp;</span>
+              <span class="author-block"><a href="https://www.linkedin.com/in/yihan-hu96/" target="_blank">Yihan Hu</a><sup>1</sup>&nbsp;&nbsp;&nbsp;</span>
+              <span class="author-block"><a href="https://wzzheng.net/" target="_blank">Wenzhao Zheng</a><sup>3</sup>&nbsp;&nbsp;&nbsp;</span>
+              <span class="author-block"><a href="https://kriskitani.github.io/" target="_blank">Kris Kitani</a><sup>2</sup>&nbsp;&nbsp;&nbsp;</span>
+              <span class="author-block"><a href="https://zhanwei.site/" target="_blank">Wei Zhan</a><sup>1,3</sup>&nbsp;&nbsp;&nbsp;</span>
+            </div>
+
+            <div class="is-size-5 publication-authors">
+              <span class="author-block"><sup>1</sup>Applied Intuition</span>&nbsp;&nbsp;&nbsp;
+              <span class="author-block"><sup>2</sup>Carnegie Mellon University</span>&nbsp;&nbsp;&nbsp;
+              <span class="author-block"><sup>3</sup>University of California, Berkeley</span>
+              <br><b>ICLR 2026</b>
+              <br>
+              <span class="is-size-7">
+                <i>Work done during internship at Applied Intuition.</i>
+              </span>
+            </div>
+
+            <div class="column has-text-centered">
+              <div class="publication-links">
+                <span class="link-block">
+                  <a href="TODO" target="_blank" class="external-link button is-normal is-rounded is-dark">
+                    <span class="icon"><i class="fas fa-file-pdf"></i></span>
+                    <span>PDF</span>
+                  </a>
+                </span>
+                <span class="link-block">
+                  <a href="TODO" target="_blank" class="external-link button is-normal is-rounded is-dark">
+                    <span class="icon"><i class="ai ai-arxiv"></i></span>
+                    <span>arXiv</span>
+                  </a>
+                </span>
+                <span class="link-block">
+                  <a href="TODO" target="_blank" class="external-link button is-normal is-rounded is-dark">
+                    <span class="icon"><i class="fab fa-github"></i></span>
+                    <span>Code</span>
+                  </a>
+                </span>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="hero is-small">
+    <div class="hero-body">
+      <div class="container is-max-desktop">
+        <div class="item">
+          <h3 class="title is-4 has-text-left" style="margin-bottom: 0.75rem;">
+            <strong>🫧 S2GO:</strong> Compact streaming queries for semantic Gaussian occupancy
+          </h3>
+          <img src="static/images/s2go_main6.png" alt="S2GO overview" />
+          <h4 class="subtitle has-text-centered" style="margin-top: 0.75rem;">
+            S2GO maintains a compact set of persistent 3D queries over time, decodes each query into a small bundle of semantic 3D Gaussians, and splats them into voxels for streaming occupancy estimation and forecasting.
+          </h4>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section hero is-light">
+    <div class="container fluid">
+      <div class="columns is-centered has-text-centered">
+        <div class="column is-four-fifths">
+          <h2 class="title is-3">Abstract</h2>
+          <div class="content has-text-justified">
+            <p>
+              Despite the efficiency and performance of sparse query-based representations for detection, state-of-the-art 3D occupancy estimation methods still rely on voxel-based or dense Gaussian-based 3D representations. However, dense representations are slow, and they lack flexibility in capturing the temporal dynamics of driving scenes. Distinct from prior work, we instead summarize the scene into a compact set of 3D queries which are propagated through time in an online, streaming fashion. These queries are then decoded into semantic Gaussians at each timestep. We couple our framework with a denoising rendering objective to guide the queries and their constituent Gaussians in effectively capturing scene geometry. Due to its efficient, query-based representation, S2GO achieves state-of-the-art performance on the nuScenes and KITTI occupancy benchmarks, outperforming prior art (e.g., GaussianWorld) by <b>2.7 IoU</b> with <b>5.9x faster</b> inference.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="hero is-small">
+    <div class="hero-body">
+      <div class="container">
+        <div class="columns is-centered has-text-centered">
+          <div class="column is-four-fifths">
+            <br>
+            <h2 class="title is-3">Core idea</h2>
+            <div class="content has-text-justified">
+              <p>
+                <b>Core idea:</b> we represent the dense 3D world using a small set of <b>persistent 3D queries</b>.
+                These queries act as a <b>compact, streaming summary</b> of the scene: they carry long-horizon context forward, interact globally in sparse query space, and are refined online using the current camera views.
+              </p>
+              <p>
+                <b>Queries are the streaming state</b> that we propagate over time.
+                This makes long-term temporal integration efficient and flexible, since global feature interaction happens over <b>~1k queries</b> instead of a dense 3D representation.
+                At each timestep, we decode the current queries into a denser set of semantic Gaussians to produce occupancy.
+              </p>
+            </div>
+
+            <div class="has-text-centered">
+              <figure class="image">
+                <img src="static/images/qual_surroundocc_s2go.png" style="border-radius:6px;" />
+              </figure>
+              <p class="is-size-7 has-text-justified" style="margin-top:0.5rem;">
+                <b>Streaming state matters.</b> Using persistent queries as the streaming state preserves a clean, object-level memory over time, which helps avoid instance merging artifacts in long-horizon sequences.
+              </p>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="hero is-small is-light">
+    <div class="hero-body">
+      <div class="container">
+        <div class="columns is-centered has-text-centered">
+          <div class="column is-four-fifths">
+            <br>
+            <h2 class="title is-3">Method</h2>
+            <div class="content has-text-justified">
+              <p>
+                At each timestep, S2GO maintains a set of 3D queries with associated locations and features.
+                We refine these queries using cross-attention to the current multi-view image features and self-attention to a short queue of past queries, so temporal fusion happens in <b>sparse query space</b> rather than in a dense 3D representation.
+                From the refined query features, the model predicts a per-query position offset, velocity, and Gaussian parameters.
+                Each query then expands into a small bundle of Gaussians that capture local geometry and semantics.
+              </p>
+              <p>
+                Concretely, our streaming state is extremely compact: <b>~1k queries</b> (900 for S2GO-Small, 1800 for S2GO-Base).
+                This stands in contrast to dense Gaussian occupancy methods that rely on <b>tens of thousands of Gaussians</b> (e.g., 25.6k–144k) to cover the scene.
+              </p>
+            </div>
+
+            <div class="columns is-centered is-vcentered" style="margin-top: 0.5rem;">
+              <div class="column is-6">
+                <figure class="image">
+                  <img src="static/images/decoding.png" style="border-radius:6px;" />
+                </figure>
+              </div>
+              <div class="column is-6">
+                <div class="content has-text-justified">
+                  <p>
+                    Each query is decoded into a local set of Gaussians, predicting:
+                  </p>
+                  <p>
+                    <b>Position offset</b> (a correction for the entire Gaussian group)
+                    <br>
+                    <b>Semantic class</b> (and RGB during pretraining)
+                    <br>
+                    <b>Query opacity</b> (overall occupancy confidence)
+                    <br>
+                    <b>Gaussians</b> (multiple Gaussians for more precise local modeling)
+                    <br>
+                    <b>Velocity</b> (for dynamic modeling and multi-frame supervision)
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="hero is-small">
+    <div class="hero-body">
+      <div class="container">
+        <div class="columns is-centered has-text-centered">
+          <div class="column is-four-fifths">
+            <br>
+            <h2 class="title is-3">Two-stage training</h2>
+            <div class="content has-text-justified">
+              <p>
+                Direct semantic occupancy supervision alone provides an ambiguous signal for query motion.
+                The supervision is highly local and can lead to poor local minima: when queries start in empty space, the model can reduce voxel loss through small, local changes in the decoded Gaussians instead of moving queries through free space to reach occupied regions.
+                This often produces <b>stagnant query behavior</b> and <b>poor geometric coverage</b>.
+              </p>
+              <p>
+                <b>Stage 1 (geometry denoising pretraining).</b>
+                We initialize query locations at noised LiDAR points and train the network to recover geometry through a denoising objective.
+                To capture fine-grained local shape, decoded Gaussians are rendered from the current and neighboring views and supervised with RGB and depth.
+              </p>
+              <p>
+                <b>Stage 2 (semantic occupancy).</b>
+                LiDAR is no longer used, and query locations are randomly initialized.
+                The network uses its pretrained geometry prior to reposition queries, decode to Gaussians, and predict semantic occupancy.
+              </p>
+            </div>
+
+            <div class="has-text-centered">
+              <figure class="image">
+                <img src="static/images/denoise_abl_contrast.png" style="border-radius:6px;" />
+              </figure>
+              <p class="is-size-7 has-text-justified" style="margin-top:0.5rem;">
+                <b>Impact of denoising pretraining.</b> Without pretraining, queries remain largely stagnant and Gaussians fail to capture 3D structure.
+                With denoising + rendering, queries move towards occupied regions and Gaussians self-organize to represent the scene.
+              </p>
+            </div>
+
+            <div class="content has-text-justified" style="margin-top:1rem;">
+              <p>
+                <b>Pretraining ablation.</b> Direct training underperforms.
+                Initializing queries from noised LiDAR points is important, and combining denoising with RGB+depth rendering objectives yields state-of-the-art results.
+              </p>
+            </div>
+
+            <div class="table-container">
+              <table class="table is-striped is-narrow is-fullwidth">
+                <thead>
+                  <tr>
+                    <th>Setting</th>
+                    <th>Query Init</th>
+                    <th>Depth</th>
+                    <th>RGB</th>
+                    <th>Denoise</th>
+                    <th>mIoU</th>
+                    <th>IoU</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>(a)</td>
+                    <td>-</td>
+                    <td>✗</td>
+                    <td>✗</td>
+                    <td>✗</td>
+                    <td>13.02</td>
+                    <td>25.73</td>
+                  </tr>
+                  <tr>
+                    <td>(b)</td>
+                    <td>Learnable</td>
+                    <td>✓</td>
+                    <td>✓</td>
+                    <td>✗</td>
+                    <td>12.42</td>
+                    <td>26.64</td>
+                  </tr>
+                  <tr>
+                    <td>(c)</td>
+                    <td>LiDAR</td>
+                    <td>✓</td>
+                    <td>✓</td>
+                    <td>✗</td>
+                    <td>13.62</td>
+                    <td>27.08</td>
+                  </tr>
+                  <tr>
+                    <td>(d)</td>
+                    <td>LiDAR + ε</td>
+                    <td>✓</td>
+                    <td>✓</td>
+                    <td>✗</td>
+                    <td>20.55</td>
+                    <td>32.68</td>
+                  </tr>
+                  <tr>
+                    <td>(e)</td>
+                    <td>LiDAR + ε</td>
+                    <td>✓</td>
+                    <td>✗</td>
+                    <td>✗</td>
+                    <td>20.25</td>
+                    <td>32.44</td>
+                  </tr>
+                  <tr>
+                    <td>(f)</td>
+                    <td>LiDAR + ε</td>
+                    <td>✓</td>
+                    <td>✓</td>
+                    <td>✓</td>
+                    <td><b>21.60</b></td>
+                    <td><b>33.91</b></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="hero is-small is-light">
+    <div class="hero-body">
+      <div class="container">
+        <div class="columns is-centered has-text-centered">
+          <div class="column is-four-fifths">
+            <br>
+            <h2 class="title is-3">Opacity-aware + efficient voxel splatting</h2>
+            <div class="content has-text-justified">
+              <p>
+                S2GO applies dense occupancy supervision by splatting Gaussians into a voxel grid.
+                A key detail is to perform <b>opacity-aware semantic splatting</b>.
+                In prior Gaussian-to-voxel formulations, opacity is only used to weight Gaussians inside the class mixture and has no bearing on whether a location is occupied.
+                This leads to unexpected behavior: Gaussians in unoccupied regions can keep significant opacity while reducing occupancy contribution by shrinking or drifting <i>between voxel centers</i>.
+                We instead weight occupancy probability by opacity, encouraging background Gaussians to simply predict low opacity and making the representation more consistent with rendering.
+              </p>
+              <p>
+                We also introduce an <b>efficient voxel splatting</b> implementation with custom CUDA kernels that exploit locality.
+                We block voxels into small grids (e.g., 4×4×4) and collaboratively load nearby Gaussians for better cache behavior, and we carefully structure the backward pass to avoid expensive atomics.
+              </p>
+            </div>
+
+            <div class="table-container">
+              <table class="table is-striped is-narrow is-fullwidth">
+                <thead>
+                  <tr>
+                    <th>Opacity in occupancy</th>
+                    <th>Efficient G2V</th>
+                    <th>mIoU</th>
+                    <th>IoU</th>
+                    <th>Train GPU hours</th>
+                    <th>Infer GPU Mem.</th>
+                    <th>Infer FPS</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>✗</td>
+                    <td>✗</td>
+                    <td>16.97</td>
+                    <td>28.75</td>
+                    <td>55h</td>
+                    <td>2436 MB</td>
+                    <td>25.2</td>
+                  </tr>
+                  <tr>
+                    <td>✓</td>
+                    <td>✗</td>
+                    <td>20.13</td>
+                    <td>32.28</td>
+                    <td>129h</td>
+                    <td>7043 MB</td>
+                    <td>20.4</td>
+                  </tr>
+                  <tr>
+                    <td>✓</td>
+                    <td>✓</td>
+                    <td><b>20.55</b></td>
+                    <td><b>32.68</b></td>
+                    <td><b>28h</b></td>
+                    <td>2448 MB</td>
+                    <td><b>25.3</b></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="hero is-small">
+    <div class="hero-body">
+      <div class="container">
+        <div class="columns is-centered has-text-centered">
+          <div class="column is-four-fifths">
+            <br>
+            <h2 class="title is-3">Streaming propagation</h2>
+            <div class="content has-text-justified">
+              <p>
+                A streaming model requires an explicit propagation rule for query state.
+                S2GO propagates a subset of queries based on confidence and enforces a minimum-distance constraint to avoid redundant propagated queries clustering in a small region.
+                This simple constraint improves spatial coverage and improves performance.
+              </p>
+            </div>
+
+            <div class="table-container">
+              <table class="table is-striped is-narrow is-fullwidth">
+                <thead>
+                  <tr>
+                    <th>Propagation</th>
+                    <th>mIoU</th>
+                    <th>IoU</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>None</td>
+                    <td>17.92</td>
+                    <td>29.24</td>
+                  </tr>
+                  <tr>
+                    <td>top-k opacity</td>
+                    <td>19.94</td>
+                    <td>32.03</td>
+                  </tr>
+                  <tr>
+                    <td>δ-dist top-k opacity</td>
+                    <td><b>20.51</b></td>
+                    <td><b>32.51</b></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
+            <div class="content has-text-justified">
+              <p>
+                Longer history improves occupancy performance, highlighting the benefit of maintaining a persistent, streaming query state.
+              </p>
+            </div>
+
+            <div class="has-text-centered">
+              <figure class="image">
+                <img src="static/images/history_frames.png" style="border-radius:6px;" />
+              </figure>
+              <p class="is-size-7 has-text-justified" style="margin-top:0.5rem;">
+                <b>History length vs performance.</b> Longer history consistently improves occupancy performance, showcasing the advantage of streaming queries.
+              </p>
+            </div>
+
+            <div class="has-text-centered" style="margin-top: 1rem;">
+              <figure class="image">
+                <img src="static/images/query_life.png" style="border-radius:6px;" />
+              </figure>
+              <p class="is-size-7 has-text-justified" style="margin-top:0.5rem;">
+                <b>Query persistence.</b> We visualize the distribution of query lifetimes, highlighting that queries are persistent over time.
+              </p>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="hero is-small is-light">
+    <div class="hero-body">
+      <div class="container">
+        <div class="columns is-centered has-text-centered">
+          <div class="column is-four-fifths">
+            <br>
+            <h2 class="title is-3">Results</h2>
+
+            <div class="content has-text-justified">
+              <p>
+                We report quantitative 3D occupancy results on the <b>nuScenes-SurroundOcc</b> validation set.
+                S2GO achieves state-of-the-art accuracy while maintaining real-time throughput.
+              </p>
+            </div>
+
+            <div class="table-container" style="overflow-x:auto;">
+              <table class="table is-striped is-narrow is-fullwidth results-table">
+                <thead>
+                  <tr>
+                    <th>Method</th>
+                    <th>FPS</th>
+                    <th>IoU</th>
+                    <th>mIoU</th>
+                    <th>barrier</th>
+                    <th>bicycle</th>
+                    <th>bus</th>
+                    <th>car</th>
+                    <th>const. veh.</th>
+                    <th>motorcycle</th>
+                    <th>pedestrian</th>
+                    <th>traffic cone</th>
+                    <th>trailer</th>
+                    <th>truck</th>
+                    <th>drive. suf.</th>
+                    <th>other flat</th>
+                    <th>sidewalk</th>
+                    <th>terrain</th>
+                    <th>manmade</th>
+                    <th>vegetation</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><span style="white-space: nowrap;">MonoScene</span></td>
+                    <td>-</td>
+                    <td>24.0</td>
+                    <td>7.3</td>
+                    <td>4.0</td>
+                    <td>0.4</td>
+                    <td>8.0</td>
+                    <td>8.0</td>
+                    <td>2.9</td>
+                    <td>0.3</td>
+                    <td>1.2</td>
+                    <td>0.7</td>
+                    <td>4.0</td>
+                    <td>4.4</td>
+                    <td>27.7</td>
+                    <td>5.2</td>
+                    <td>15.1</td>
+                    <td>11.3</td>
+                    <td>9.0</td>
+                    <td>14.9</td>
+                  </tr>
+                  <tr>
+                    <td><span style="white-space: nowrap;">Atlas</span></td>
+                    <td>-</td>
+                    <td>28.7</td>
+                    <td>15.0</td>
+                    <td>10.6</td>
+                    <td>5.7</td>
+                    <td>19.7</td>
+                    <td>24.9</td>
+                    <td>8.9</td>
+                    <td>8.8</td>
+                    <td>6.5</td>
+                    <td>3.3</td>
+                    <td>10.4</td>
+                    <td>16.2</td>
+                    <td>34.9</td>
+                    <td>15.5</td>
+                    <td>21.9</td>
+                    <td>21.0</td>
+                    <td>11.2</td>
+                    <td>20.5</td>
+                  </tr>
+                  <tr>
+                    <td><span style="white-space: nowrap;">BEVFormer</span></td>
+                    <td>3.3</td>
+                    <td>30.5</td>
+                    <td>16.8</td>
+                    <td>14.2</td>
+                    <td>6.6</td>
+                    <td>23.5</td>
+                    <td>28.3</td>
+                    <td>8.7</td>
+                    <td>10.8</td>
+                    <td>6.6</td>
+                    <td>4.1</td>
+                    <td>11.2</td>
+                    <td>17.8</td>
+                    <td>37.3</td>
+                    <td>18.0</td>
+                    <td>22.9</td>
+                    <td>22.2</td>
+                    <td>13.8</td>
+                    <td>22.2</td>
+                  </tr>
+                  <tr>
+                    <td><span style="white-space: nowrap;">TPVFormer</span></td>
+                    <td>2.9</td>
+                    <td>30.9</td>
+                    <td>17.1</td>
+                    <td>16.0</td>
+                    <td>5.3</td>
+                    <td>23.9</td>
+                    <td>27.3</td>
+                    <td>9.8</td>
+                    <td>8.7</td>
+                    <td>7.1</td>
+                    <td>5.2</td>
+                    <td>11.0</td>
+                    <td>19.2</td>
+                    <td>38.9</td>
+                    <td>21.3</td>
+                    <td>24.3</td>
+                    <td>23.2</td>
+                    <td>11.7</td>
+                    <td>20.8</td>
+                  </tr>
+                  <tr>
+                    <td><span style="white-space: nowrap;">OccFormer</span></td>
+                    <td>-</td>
+                    <td>31.4</td>
+                    <td>19.0</td>
+                    <td>18.7</td>
+                    <td>10.4</td>
+                    <td>23.9</td>
+                    <td>30.3</td>
+                    <td>10.3</td>
+                    <td>14.2</td>
+                    <td>13.6</td>
+                    <td>10.1</td>
+                    <td>12.5</td>
+                    <td>20.8</td>
+                    <td>38.8</td>
+                    <td>19.8</td>
+                    <td>24.2</td>
+                    <td>22.2</td>
+                    <td>13.5</td>
+                    <td>21.4</td>
+                  </tr>
+                  <tr>
+                    <td><span style="white-space: nowrap;">SurroundOcc</span></td>
+                    <td>3.3</td>
+                    <td>31.5</td>
+                    <td>20.3</td>
+                    <td>20.6</td>
+                    <td>11.7</td>
+                    <td>28.1</td>
+                    <td>30.9</td>
+                    <td>10.7</td>
+                    <td>15.1</td>
+                    <td>14.1</td>
+                    <td>12.1</td>
+                    <td>14.4</td>
+                    <td>22.3</td>
+                    <td>37.3</td>
+                    <td>23.7</td>
+                    <td>24.5</td>
+                    <td>22.8</td>
+                    <td>14.9</td>
+                    <td>21.9</td>
+                  </tr>
+                  <tr>
+                    <td><span style="white-space: nowrap;">GaussianFormer</span></td>
+                    <td>2.7</td>
+                    <td>29.8</td>
+                    <td>19.1</td>
+                    <td>19.5</td>
+                    <td>11.3</td>
+                    <td>26.1</td>
+                    <td>29.8</td>
+                    <td>10.5</td>
+                    <td>13.8</td>
+                    <td>12.6</td>
+                    <td>8.7</td>
+                    <td>12.7</td>
+                    <td>21.6</td>
+                    <td>39.6</td>
+                    <td>23.3</td>
+                    <td>24.5</td>
+                    <td>23.0</td>
+                    <td>9.6</td>
+                    <td>19.1</td>
+                  </tr>
+                  <tr>
+                    <td><span style="white-space: nowrap;">GaussianFormer-2</span></td>
+                    <td>2.8</td>
+                    <td>31.7</td>
+                    <td>20.8</td>
+                    <td>21.4</td>
+                    <td>13.4</td>
+                    <td>28.5</td>
+                    <td>30.8</td>
+                    <td>10.9</td>
+                    <td>15.8</td>
+                    <td>13.6</td>
+                    <td>10.5</td>
+                    <td>14.0</td>
+                    <td>22.9</td>
+                    <td>40.6</td>
+                    <td>24.4</td>
+                    <td>26.1</td>
+                    <td>24.3</td>
+                    <td>13.8</td>
+                    <td>22.0</td>
+                  </tr>
+                  <tr>
+                    <td><span style="white-space: nowrap;">QuadricFormer</span></td>
+                    <td>6.2</td>
+                    <td>31.2</td>
+                    <td>20.1</td>
+                    <td>19.6</td>
+                    <td>13.1</td>
+                    <td>27.3</td>
+                    <td>29.6</td>
+                    <td>11.3</td>
+                    <td>16.3</td>
+                    <td>12.7</td>
+                    <td>9.2</td>
+                    <td>12.5</td>
+                    <td>21.2</td>
+                    <td>40.2</td>
+                    <td>24.3</td>
+                    <td>25.7</td>
+                    <td>24.2</td>
+                    <td>13.0</td>
+                    <td>21.9</td>
+                  </tr>
+                  <tr>
+                    <td><span style="white-space: nowrap;">GaussianWorld*</span></td>
+                    <td>4.4</td>
+                    <td>32.8</td>
+                    <td>21.8</td>
+                    <td>21.6</td>
+                    <td>13.3</td>
+                    <td>27.3</td>
+                    <td>31.2</td>
+                    <td>13.9</td>
+                    <td>16.9</td>
+                    <td>13.3</td>
+                    <td>11.8</td>
+                    <td>14.8</td>
+                    <td>23.7</td>
+                    <td>41.9</td>
+                    <td>24.3</td>
+                    <td>28.4</td>
+                    <td>26.3</td>
+                    <td>15.7</td>
+                    <td>24.5</td>
+                  </tr>
+                  <tr>
+                    <td><span style="white-space: nowrap;">ALOcc-mini-GF</span></td>
+                    <td>5.4</td>
+                    <td>34.6</td>
+                    <td>23.1</td>
+                    <td>22.2</td>
+                    <td>16.0</td>
+                    <td>27.9</td>
+                    <td>32.7</td>
+                    <td>12.1</td>
+                    <td>18.9</td>
+                    <td>16.6</td>
+                    <td>15.3</td>
+                    <td>14.5</td>
+                    <td>23.9</td>
+                    <td>46.0</td>
+                    <td>28.2</td>
+                    <td>29.0</td>
+                    <td>26.6</td>
+                    <td>15.8</td>
+                    <td>23.7</td>
+                  </tr>
+                  <tr>
+                    <td><span style="white-space: nowrap;">ALOcc-GF</span></td>
+                    <td>0.9</td>
+                    <td>38.2</td>
+                    <td>25.5</td>
+                    <td>24.3</td>
+                    <td>18.8</td>
+                    <td>29.8</td>
+                    <td>34.3</td>
+                    <td>17.9</td>
+                    <td>19.6</td>
+                    <td>17.5</td>
+                    <td>17.2</td>
+                    <td>15.5</td>
+                    <td>26.5</td>
+                    <td>47.6</td>
+                    <td>29.9</td>
+                    <td>31.2</td>
+                    <td>29.2</td>
+                    <td>20.0</td>
+                    <td>29.0</td>
+                  </tr>
+                  <tr class="results-separator">
+                    <td colspan="20"></td>
+                  </tr>
+                  <tr>
+                    <td><b><span style="white-space: nowrap;">S2GO-Small (ours)</span></b></td>
+                    <td><b>26.1</b></td>
+                    <td>34.3</td>
+                    <td>22.1</td>
+                    <td>20.8</td>
+                    <td>13.1</td>
+                    <td>27.5</td>
+                    <td>30.3</td>
+                    <td>14.5</td>
+                    <td>16.5</td>
+                    <td>11.7</td>
+                    <td>10.9</td>
+                    <td>13.5</td>
+                    <td>23.3</td>
+                    <td>46.3</td>
+                    <td>29.2</td>
+                    <td>29.7</td>
+                    <td>28.4</td>
+                    <td>13.0</td>
+                    <td>25.1</td>
+                  </tr>
+                  <tr>
+                    <td><b><span style="white-space: nowrap;">S2GO-Base (ours)</span></b></td>
+                    <td><b>19.6</b></td>
+                    <td>35.5</td>
+                    <td>22.7</td>
+                    <td>21.9</td>
+                    <td>13.4</td>
+                    <td>27.5</td>
+                    <td>32.1</td>
+                    <td>14.9</td>
+                    <td>15.3</td>
+                    <td>12.9</td>
+                    <td>11.8</td>
+                    <td>13.4</td>
+                    <td>24.0</td>
+                    <td>46.9</td>
+                    <td>29.1</td>
+                    <td>30.3</td>
+                    <td>29.1</td>
+                    <td>14.7</td>
+                    <td>26.4</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
+            <div class="has-text-centered" style="margin-top: 1.5rem;">
+              <figure class="image">
+                <video controls autoplay muted loop playsinline style="border-radius:6px; width:100%; height:auto;">
+                  <source src="static/videos/s2go.mp4" type="video/mp4">
+                </video>
+              </figure>
+              <p class="is-size-7 has-text-justified" style="margin-top:0.5rem;">
+                <b>nuScenes visualization.</b> Top: RGB images. Bottom-left: S2GO predictions. Bottom-right: ground truth.
+              </p>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="BibTeX">
+    <div class="container is-max-desktop content">
+      <h2 class="title">BibTeX</h2>
+      <pre><code>@inproceedings{Park2026S2GO,
+  title={S2GO: Streaming Sparse Gaussian Occupancy},
+  author={Jinhyung Park and Chensheng Peng and Yihan Hu and Wenzhao Zheng and Kris Kitani and Wei Zhan},
+  booktitle={International Conference on Learning Representations (ICLR)},
+  year={2026}
+}</code></pre>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="columns is-centered">
+        <div class="column is-8">
+          <div class="content">
+            <p>
+              This page was built using the <a href="https://github.com/eliahuhorwitz/Academic-project-page-template" target="_blank">Academic Project Page Template</a> which was adopted from the <a href="https://nerfies.github.io" target="_blank">Nerfies</a> project page. This website is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/" target="_blank">Creative Commons Attribution-ShareAlike 4.0 International License</a>.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>
